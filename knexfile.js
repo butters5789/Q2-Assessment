@@ -4,15 +4,16 @@ module.exports = {
 
   development: {
     client: 'postgresql',
-    connection: 'postgresql://localhost/galvanize-reads'
-  },
-  seeds: {
-    directory: './seeds/'
+    connection: process.env.DATABASE_URL,
+    pool : {
+      min: 2,
+      max: 10
+    }
   },
 
   production: {
     client: 'postgresql',
-    cconnection: process.env.DATABASE_URL,
+    connection: process.env.DATABASE_URL,
     pool : {
       min: 2,
       max: 10
