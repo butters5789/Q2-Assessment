@@ -1,0 +1,47 @@
+<div class="row">
+  <header>
+    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+    <h1>Galvanize Reads: {{page_title}}</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/books">Books</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<div class="row">
+
+  <table class="table table-bordered">
+    <tr>
+      <td>ID</td>
+      <td>Book ID</td>
+      <td>Author ID</td>
+      <td>Title</td>
+      <td>Genre</td>
+      <td>Description</td>
+      <td>Cover URL</td>
+      <td>First Name</td>
+      <td>Last Name</td>
+      <td>Biography</td>
+      <td>Portrait URL</td>
+    </tr>
+    {{#each library}}
+      <tr>
+        <td>{{id}}</td>
+        <td>{{book_id}}</td>
+        <td>{{author_id}}</td>
+        <td>{{title}}</td>
+        <td>{{genre}}</td>
+        <td>{{description}}</td>
+        <td><img src="{{cover_url}}" alt="{{title}}" /></td>
+        <td>{{first_name}}</td>
+        <td>{{last_name}}</td>
+        <td>{{biography}}</td>
+        <td><img src="{{portrait_url}}" alt="{{title}}" /></td>
+      </tr>
+    {{/each}}
+  </table>
+
+</div>
