@@ -8,13 +8,56 @@ header {
     display: inline-block;
   }
 }
-
 .books {
-  margin: 0 0 20px 0;
+  margin: 0 0 20px;
   h3 {
     margin-top: 0;
   }
   img {
     width: 100%;
   }
+}
+.homeFeature {
+  img {
+    margin: 20px 0 0;
+    height: 165px;
+    max-width: 100%;
+  }
+  .col-md-6 {
+    border: 1px solid black;
+  }
+}
+.sideNav {
+  .authorsSideNav {
+    border: 1px solid black;
+     :hover {
+      background-color: gray;
+    }
+  }
+  .booksSideNav {
+    border: 1px solid black;
+     :hover {
+      background-color: gray;
+    }
+  }
+  img {
+    max-width: 100%;
+    margin: 15px 0;
+  }
+  .active {
+    background-color: gray;
+  }
+}
+.rotate {
+  margin: 60px 0 40px;
+  /* Safari */
+  -webkit-transform: rotate(-90deg);
+  /* Firefox */
+  -moz-transform: rotate(-90deg);
+  /* IE */
+  -ms-transform: rotate(-90deg);
+  /* Opera */
+  -o-transform: rotate(-90deg);
+  /* Internet Explorer */
+  filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
