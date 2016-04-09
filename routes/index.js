@@ -27,6 +27,22 @@ router.get('/books/delete/:id', function(req, res, next) {
   });
 });
 
+router.get('/books/:id', function(req, res, next) {
+  knex('books').where({ id: req.params.id }).first().then(function(book) {
+    knex('library')
+      .join('authors', 'authors.id', 'library.author_id')
+      .select('first_name', 'last_name')
+      .where({ book_id: book.id })
+      .then(function (authors) {
+        var authorsObj = {};
+        for (var i = 0; i < authors.length; ++i) {
+          authorsObj[i] = authors[i];
+        }
+        res.render('book', { page_title: ': Book', book: book, authors: authorsObj });
+      })
+  })
+});
+
 router.get('/authors', function(req, res, next) {
   knex('library')
     .select('authors.id', 'title', 'first_name', 'last_name', 'biography', 'portrait_url')

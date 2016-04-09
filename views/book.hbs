@@ -27,26 +27,26 @@
 
     <div class="row">
       <div class="col-md-12 text-right bookNav">
-        <a href="/books/add"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+        <a href="/books"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span></a>
       </div>
     </div>
 
-    {{#each library}}
       <div class="row books">
         <div class="col-md-2">
-          <img src="{{cover_url}}" alt="{{title}}" />
+          <img src="{{book.cover_url}}" alt="{{book.title}}" />
         </div>
         <div class="col-md-10">
           <div class="deleteButton">
-            <a href="/books/delete/{{id}}"><span class="glyphicon glyphicon-remove-sign text-danger" aria-hidden="true"></span></a>
+            <a href="/books/delete/{{book.id}}"><span class="glyphicon glyphicon-remove-sign text-danger" aria-hidden="true"></span></a>
           </div>
-          <h3><a href="/books/{{id}}">{{title}}</a></h3>
+          <h3>{{book.title}}</h3>
+          {{#each authors}}
           <h4>Author: {{first_name}} {{last_name}}</h4>
-          <h5>Genre: {{genre}}</h5>
-          <p>{{description}}</p>
+          {{/each}}
+          <h5>Genre: {{book.genre}}</h5>
+          <p>{{book.description}}</p>
         </div>
       </div>
-    {{/each}}
 
   </div>
 </div>
