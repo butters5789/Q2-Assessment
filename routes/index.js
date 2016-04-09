@@ -17,6 +17,36 @@ router.get('/books', function(req, res, next) {
     })
 });
 
+router.get('/books/add', function(req, res, next) {
+    res.render('addbook', { page_title: ': Add Book' });
+});
+
+router.get('/books/delete/:id', function(req, res, next) {
+  knex('books').where('id', req.params.id).del().then(function() {
+    res.redirect('/books');
+  });
+});
+
+router.get('/authors', function(req, res, next) {
+  knex('library')
+    .select('authors.id', 'title', 'first_name', 'last_name', 'biography', 'portrait_url')
+    .join('books', 'books.id', 'library.book_id')
+    .join('authors', 'authors.id', 'library.author_id')
+    .then(function (library) {
+      res.render('authors', { page_title: ': Authors', library: library });
+    })
+});
+
+router.get('/authors/add', function(req, res, next) {
+    res.render('addauthor', { page_title: ': Add Author' });
+});
+
+router.get('/authors/delete/:id', function(req, res, next) {
+  knex('authors').where('id', req.params.id).del().then(function() {
+    res.redirect('/authors');
+  });
+});
+
 router.get('/all', function(req, res, next) {
   knex('library')
     .join('books', 'books.id', 'library.book_id')
@@ -24,10 +54,6 @@ router.get('/all', function(req, res, next) {
     .then(function(all) {
       res.render('all', { page_title: ': All', library: all });
     })
-});
-
-router.get('/books/add', function(req, res, next) {
-    res.render('addbook', { page_title: ': Add Book' });
 });
 
 router.post('/books/add', function(req, res, next) {
@@ -40,10 +66,14 @@ router.post('/books/add', function(req, res, next) {
   })
 });
 
-router.get('/books/delete/:id', function(req, res, next) {
-  knex('books').where('id', req.params.id).del().then(function() {
-    res.redirect('/books');
-  });
+router.post('/authors/add', function(req, res, next) {
+  knex('authors').insert({ first_name: req.body.first_name, last_name: req.body.last_name, portrait_url: req.body.portrait_url, biography: req.body.biography }).returning('id').then(function(authorId) {
+    knex('books').insert({ title: req.body.title }).returning('id').then(function(bookId) {
+      knex('library').insert({ book_id: bookId[0], author_id: authorId[0] }).then(function() {
+        res.redirect('/authors');
+      })
+    })
+  })
 });
 
 module.exports = router;

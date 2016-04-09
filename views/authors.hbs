@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-2 sideNav">
+
+    <div class="row">
+
+      <div class="col-md-8">
+        <a class="active" href="/authors">
+          <img src="/images/python_in_a_nutshell.jpg" alt="Python In A Nutshell" />
+          <h2 class="rotate">Authors</h2>
+        </a>
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-8">
+        <a href="/books">
+          <img src="/images/kyle_simpson.jpg" alt="Kyle Simpson" />
+          <h2 class="rotate">Books</h2>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="col-md-10">
+
+    <div class="row">
+      <div class="col-md-12 text-right bookNav">
+        <a href="/authors/add"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+      </div>
+    </div>
+
+    {{#each library}}
+      <div class="row books">
+        <div class="col-md-2">
+          <img src="{{portrait_url}}" alt="{{first_name}} {{last_name}}" />
+        </div>
+        <div class="col-md-10">
+          <div class="deleteButton">
+            <a href="/authors/delete/{{id}}"><span class="glyphicon glyphicon-remove-sign text-danger" aria-hidden="true"></span></a>
+          </div>
+          <h3>{{first_name}} {{last_name}}</h3>
+          <p>{{biography}}</p>
+          <h4>{{title}}</h4>
+        </div>
+      </div>
+    {{/each}}
+
+  </div>
+</div>
