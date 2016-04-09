@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/books', function(req, res, next) {
   knex('library')
-    .select('books.id', 'title', 'first_name', 'last_name', 'genre', 'description', 'cover_url')
+    .select('books.id', 'author_id', 'title', 'first_name', 'last_name', 'genre', 'description', 'cover_url')
     .join('books', 'books.id', 'library.book_id')
     .join('authors', 'authors.id', 'library.author_id')
     .then(function (library) {
@@ -31,21 +31,21 @@ router.get('/books/:id', function(req, res, next) {
   knex('books').where({ id: req.params.id }).first().then(function(book) {
     knex('library')
       .join('authors', 'authors.id', 'library.author_id')
-      .select('first_name', 'last_name')
+      .select('authors.id', 'first_name', 'last_name')
       .where({ book_id: book.id })
       .then(function (authors) {
         var authorsObj = {};
         for (var i = 0; i < authors.length; ++i) {
           authorsObj[i] = authors[i];
         }
-        res.render('book', { page_title: ': Book', book: book, authors: authorsObj });
+        res.render('book', { page_title: ": " + book.title, book: book, authors: authorsObj });
       })
   })
 });
 
 router.get('/authors', function(req, res, next) {
   knex('library')
-    .select('authors.id', 'title', 'first_name', 'last_name', 'biography', 'portrait_url')
+    .select('authors.id', 'book_id', 'title', 'first_name', 'last_name', 'biography', 'portrait_url')
     .join('books', 'books.id', 'library.book_id')
     .join('authors', 'authors.id', 'library.author_id')
     .then(function (library) {
@@ -63,13 +63,20 @@ router.get('/authors/delete/:id', function(req, res, next) {
   });
 });
 
-router.get('/all', function(req, res, next) {
-  knex('library')
-    .join('books', 'books.id', 'library.book_id')
-    .join('authors', 'authors.id', 'library.author_id')
-    .then(function(all) {
-      res.render('all', { page_title: ': All', library: all });
-    })
+router.get('/authors/:id', function(req, res, next) {
+  knex('authors').where({ id: req.params.id }).first().then(function(author) {
+    knex('library')
+      .join('books', 'books.id', 'library.book_id')
+      .select('books.id', 'title')
+      .where({ author_id: author.id })
+      .then(function (books) {
+        var booksObj = {};
+        for (var i = 0; i < books.length; ++i) {
+          booksObj[i] = books[i];
+        }
+        res.render('author', { page_title: ": " + author.first_name + " " + author.last_name, author: author, books: booksObj });
+      })
+  })
 });
 
 router.post('/books/add', function(req, res, next) {

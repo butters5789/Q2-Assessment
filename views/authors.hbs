@@ -5,7 +5,7 @@
 
       <div class="col-md-8">
         <a class="active" href="/authors">
-          <img src="/images/python_in_a_nutshell.jpg" alt="Python In A Nutshell" />
+          <img src="/images/kyle_simpson.jpg" alt="Kyle Simpson" />
           <h2 class="rotate">Authors</h2>
         </a>
       </div>
@@ -15,7 +15,7 @@
 
       <div class="col-md-8">
         <a href="/books">
-          <img src="/images/kyle_simpson.jpg" alt="Kyle Simpson" />
+          <img src="/images/python_in_a_nutshell.jpg" alt="Python In A Nutshell" />
           <h2 class="rotate">Books</h2>
         </a>
       </div>
@@ -40,9 +40,9 @@
           <div class="deleteButton">
             <a href="/authors/delete/{{id}}"><span class="glyphicon glyphicon-remove-sign text-danger" aria-hidden="true"></span></a>
           </div>
-          <h3>{{first_name}} {{last_name}}</h3>
+          <h3><a href="/authors/{{id}}">{{first_name}} {{last_name}}</a></h3>
           <p>{{biography}}</p>
-          <h4>{{title}}</h4>
+          <h4>Title: <a href="/books/{{book_id}}">{{title}}</h4>
         </div>
       </div>
     {{/each}}

@@ -5,7 +5,7 @@
 
       <div class="col-md-8">
         <a href="/authors">
-          <img src="/images/python_in_a_nutshell.jpg" alt="Python In A Nutshell" />
+          <img src="/images/kyle_simpson.jpg" alt="Kyle Simpson" />
           <h2 class="rotate">Authors</h2>
         </a>
       </div>
@@ -14,8 +14,8 @@
     <div class="row">
 
       <div class="col-md-8">
-        <a class="active" href="/books">
-          <img src="/images/kyle_simpson.jpg" alt="Kyle Simpson" />
+        <a href="/books">
+          <img src="/images/python_in_a_nutshell.jpg" alt="Python In A Nutshell" />
           <h2 class="rotate">Books</h2>
         </a>
       </div>
@@ -41,7 +41,7 @@
           </div>
           <h3>{{book.title}}</h3>
           {{#each authors}}
-          <h4>Author: {{first_name}} {{last_name}}</h4>
+          <h4>Author: <a href="/authors/{{id}}">{{first_name}} {{last_name}}</a></h4>
           {{/each}}
           <h5>Genre: {{book.genre}}</h5>
           <p>{{book.description}}</p>
