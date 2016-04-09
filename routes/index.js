@@ -26,4 +26,18 @@ router.get('/all', function(req, res, next) {
     })
 });
 
+router.get('/books/add', function(req, res, next) {
+    res.render('addbook', { page_title: ': Add Book' });
+});
+
+router.post('/books/add', function(req, res, next) {
+  knex('books').insert({ title: req.body.title, cover_url: req.body.cover_url, genre: req.body.genre, description: req.body.description }).returning('id').then(function(bookId) {
+    knex('authors').insert({ first_name: req.body.first_name, last_name: req.body.last_name }).returning('id').then(function(authorId) {
+      knex('library').insert({ book_id: bookId[0], author_id: authorId[0] }).then(function() {
+        res.redirect('/books');
+      })
+    })
+  })
+});
+
 module.exports = router;

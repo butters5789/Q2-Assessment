@@ -1,29 +1,35 @@
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-2 sideNav">
 
-    <div class="row sideNav">
-      <div class="col-md-6">
+    <div class="row">
+
+      <div class="col-md-8">
         <a href="/authors">
-          <div class="row authorsSideNav">
-            <div class="col-md-12">
-              <img src="images/python_in_a_nutshell.jpg" alt="Python In A Nutshell" />
-              <h2 class="rotate">Authors</h2>
-            </div>
-          </div>
+          <img src="/images/python_in_a_nutshell.jpg" alt="Python In A Nutshell" />
+          <h2 class="rotate">Authors</h2>
         </a>
-        <div class="row booksSideNav active">
-          <a href="/books">
-            <div class="col-md-12">
-              <img src="images/kyle_simpson.jpg" alt="Kyle Simpson" />
-              <h2 class="rotate">Books</h2>
-            </div>
-          </a>
-        </div>
       </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-8">
+        <a class="active" href="/books">
+          <img src="/images/kyle_simpson.jpg" alt="Kyle Simpson" />
+          <h2 class="rotate">Books</h2>
+        </a>
+      </div>
+
     </div>
 
   </div>
   <div class="col-md-10">
+
+    <div class="row">
+      <div class="col-md-12 text-right bookNav">
+        <a href="/books/add"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+      </div>
+    </div>
 
     {{#each library}}
       <div class="row books">

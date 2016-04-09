@@ -1,45 +1,48 @@
-header {
-  margin: 20px 0 0; }
-  header span {
-    font-size: 50px;
+.header h1 {
+  display: inline-block;
+  font-size: 50px; }
+  .header h1 span {
+    font-size: 92px;
     margin: 0 20px 0 0; }
-  header h1 {
-    display: inline-block; }
+
+.homeFeature img {
+  margin: 15px 0 0;
+  height: 165px;
+  max-width: 100%; }
+
+.homeFeature .col-md-6 {
+  border: 1px solid #eee; }
+
+.sideNav {
+  margin-bottom: 50px; }
+  .sideNav a {
+    border: 1px solid #eee;
+    display: block;
+    height: 100%; }
+  .sideNav a:hover {
+    background-color: #edf0f1;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.7); }
+  .sideNav img {
+    max-width: 100%;
+    padding: 15px; }
+  .sideNav .active {
+    background-color: #edf0f1;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.7); }
+
+.bookNav {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 15px;
+  font-size: 40px; }
 
 .books {
-  margin: 0 0 20px; }
+  margin-bottom: 20px; }
   .books h3 {
     margin-top: 0; }
   .books img {
     width: 100%; }
 
-.homeFeature img {
-  margin: 20px 0 0;
-  height: 165px;
-  max-width: 100%; }
-
-.homeFeature .col-md-6 {
-  border: 1px solid black; }
-
-.sideNav .authorsSideNav {
-  border: 1px solid black; }
-  .sideNav .authorsSideNav :hover {
-    background-color: gray; }
-
-.sideNav .booksSideNav {
-  border: 1px solid black; }
-  .sideNav .booksSideNav :hover {
-    background-color: gray; }
-
-.sideNav img {
-  max-width: 100%;
-  margin: 15px 0; }
-
-.sideNav .active {
-  background-color: gray; }
-
 .rotate {
-  margin: 60px 0 40px;
+  margin: 90px 0;
   /* Safari */
   -webkit-transform: rotate(-90deg);
   /* Firefox */
