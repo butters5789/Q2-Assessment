@@ -40,6 +40,9 @@
     margin-top: 0; }
   .books img {
     width: 100%; }
+  .books .deleteButton {
+    font-size: 25px;
+    float: right; }
 
 .rotate {
   margin: 90px 0;

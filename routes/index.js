@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/books', function(req, res, next) {
   knex('library')
-    .select('title', 'first_name', 'last_name', 'genre', 'description', 'cover_url')
+    .select('books.id', 'title', 'first_name', 'last_name', 'genre', 'description', 'cover_url')
     .join('books', 'books.id', 'library.book_id')
     .join('authors', 'authors.id', 'library.author_id')
     .then(function (library) {
@@ -38,6 +38,12 @@ router.post('/books/add', function(req, res, next) {
       })
     })
   })
+});
+
+router.get('/books/delete/:id', function(req, res, next) {
+  knex('books').where('id', req.params.id).del().then(function() {
+    res.redirect('/books');
+  });
 });
 
 module.exports = router;
